@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hostel Management System — Acharya Nagarjuna University</title>
+<meta name="description" content="Hostel admission, approval and room allocation for the ANU boys hostel — apply, track signatures and view block occupancy in 3D." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<!-- ===================== public header ===================== -->
+<template id="tpl-topnav">
+  <header class="topnav noprint">
+    <div class="wrap topnav__in">
+      <button class="brand" data-go="#/">
+        <span class="seal"><img class="seal__img" src="logo.png" alt="Acharya Nagarjuna University" onload="this.closest('.seal').classList.add('seal--has')" onerror="this.closest('.seal').classList.add('seal--text')"><span class="seal__txt">ANU</span></span>
+        <span>
+          <span class="brand__name">Hostel Management System</span>
+          <span class="brand__sub">Acharya Nagarjuna University · Guntur</span>
+        </span>
+      </button>
+      <span class="topnav__spacer"></span>
+      <button class="btn btn--ghost btn--sm" data-go="#/login">Sign in</button>
+      <button class="btn btn--primary btn--sm" data-go="#/apply">Start application</button>
+    </div>
+  </header>
+</template>
+
+<!-- ===================== landing ===================== -->
+<template id="tpl-landing">
+  <section class="screen">
+    <div class="hero">
+      <div class="wrap hero__grid">
+        <div>
+          <span class="eyebrow">Boys hostel · Session 2026–27</span>
+          <h1>Hostel admission, <em>start to signature</em>, without the paperwork.</h1>
+          <p class="hero__lede">
+            Apply once. The warden verifies your file, then the HOD, principal and chief warden
+            sign in parallel — not in a queue. Track every step, then see exactly which room and
+            which block you have been allotted.
+          </p>
+          <div class="hero__cta">
+            <button class="btn btn--primary" data-go="#/apply">Start application</button>
+            <button class="btn btn--ghost" data-go="#/login">Sign in to track</button>
+          </div>
+          <div class="hero__stats" id="heroStats"></div>
+        </div>
+
+        <div class="rail">
+          <div class="rail__title">How your file moves</div>
+          <div class="rail__row">
+            <span class="rail__node rail__node--orange">You submit</span>
+            <span class="rail__line"></span>
+            <span class="rail__node rail__node--blue">Warden verifies</span>
+          </div>
+          <div class="rail__fan">
+            <div class="rail__bracket"></div>
+            <div class="rail__parallel">
+              <span class="rail__node">HOD signs</span>
+              <span class="rail__node">Principal signs</span>
+              <span class="rail__node">Chief warden signs</span>
+            </div>
+          </div>
+          <div class="rail__row">
+            <span class="rail__node rail__node--green">3 of 3 signed → room allotted → ID card issued</span>
+          </div>
+          <p class="rail__caption">
+            The three signatures are independent. Any one can go first and none of them blocks
+            another, so a file rarely waits on a single desk.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="wrap">
+        <div class="strip__head">
+          <div>
+            <h2>What you'll need before you begin</h2>
+            <p class="muted" style="margin:6px 0 0;font-size:14px">Keep these ready as images or PDFs. You can save and come back at any step.</p>
+          </div>
+          <button class="btn btn--ghost btn--sm" data-go="#/apply">Start application</button>
+        </div>
+        <div class="strip__cards">
+          <article class="infocard"><div class="infocard__step">Step 1</div><h3>Personal details</h3><p>Photo, name, phone, Aadhaar, date of birth and blood group.</p></article>
+          <article class="infocard"><div class="infocard__step">Step 2</div><h3>Family &amp; address</h3><p>Parent names, occupation, contact number and full home address.</p></article>
+          <article class="infocard"><div class="infocard__step">Step 3</div><h3>Academic &amp; documents</h3><p>EAMCET rank, branch, allotment order, joining report, certificates.</p></article>
+          <article class="infocard"><div class="infocard__step">Step 4</div><h3>Fee payment</h3><p>Pay ₹15,000 through any UPI app and upload the confirmation.</p></article>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap pagefoot">
+      <span>Acharya Nagarjuna University, Nagarjuna Nagar, Guntur — 522510</span>
+      <span>Hostel office: 0863-2346114 · hostel@anu.ac.in</span>
+    </div>
+  </section>
+</template>
+
+<!-- ===================== login ===================== -->
+<template id="tpl-login">
+  <section class="screen authpage">
+    <div class="authcard">
+      <h2>Sign in</h2>
+      <p>Use your university email. New students can start an application without an account.</p>
+
+      <div class="rolechips" id="roleChips"></div>
+
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input class="input" id="loginEmail" type="email" placeholder="name@anu.ac.in" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input class="input" id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <div class="err hidden" id="loginErr"></div>
+      <button class="btn btn--primary btn--wide" id="loginBtn" style="margin-top:4px">Sign in</button>
+
+      <div style="text-align:center;margin-top:12px">
+        <button class="btn--link" data-go="#/apply">New student? Start an application</button>
+      </div>
+
+      <div class="callout" style="margin:18px 0 0">
+        <b>Demo accounts.</b> Pick a role above to fill the form. The password for every account is
+        <span class="mono">demo123</span>.
+      </div>
+    </div>
+  </section>
+</template>
+
+<div class="toasts" id="toasts"></div>
+<div id="modalRoot"></div>
+<div id="devRoot"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
