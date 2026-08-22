@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#CC0000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Dashboard · InfoREDZ</title>
+</head>
+<body data-page="admin">
+
+  <header class="site-header" id="siteHeader"></header>
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__kicker">Network overview</p>
+      <h1>Where the register is strong, and where it is thin.</h1>
+      <p class="hero__sub">Everything registered on InfoREDZ, refreshed each time this page loads.</p>
+    </div>
+  </section>
+
+  <main class="section" id="adminBody">
+    <div class="container">
+
+      <div class="kpi-grid" id="kpis"></div>
+
+      <div class="grid grid--half">
+        <section class="card card__pad">
+          <div class="section-head" style="margin-bottom:16px"><div>
+            <h3>Donors by blood group</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:5px 0 0">Where recruitment matters most.</p>
+          </div></div>
+          <div id="groupChart"></div>
+        </section>
+
+        <section class="card card__pad">
+          <div class="section-head" style="margin-bottom:16px"><div>
+            <h3>Units on shelf by group</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:5px 0 0">Totalled across every centre.</p>
+          </div></div>
+          <div id="stockChart"></div>
+          <div id="stockNote" style="margin-top:12px"></div>
+        </section>
+
+        <section class="card card__pad">
+          <div class="section-head" style="margin-bottom:16px"><div>
+            <h3>Donor availability</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:5px 0 0">How many are reachable at this moment.</p>
+          </div></div>
+          <div id="availChart"></div>
+        </section>
+
+        <section class="card card__pad">
+          <div class="section-head" style="margin-bottom:16px"><div>
+            <h3>Top cities</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:5px 0 0">Where donors are concentrated.</p>
+          </div></div>
+          <div id="cityChart"></div>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top:22px">
+        <div class="card__pad" style="padding-bottom:0">
+          <h3 style="margin-bottom:14px">Records</h3>
+          <div class="chips" style="padding-top:0">
+            <button class="chip is-on" data-tab-table="donors">Donors</button>
+            <button class="chip" data-tab-table="banks">Blood banks</button>
+            <button class="chip" data-tab-table="requests">Requests</button>
+          </div>
+          <div class="search" style="margin:14px 0 18px">
+            <span class="search__icon">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M10 2a8 8 0 1 0 4.9 14.3l5 5 1.4-1.4-5-5A8 8 0 0 0 10 2zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/></svg>
+            </span>
+            <label class="sr-only" for="adminTableSearch">Search records</label>
+            <input id="adminTableSearch" class="input" type="search" placeholder="Search by name, city or group…">
+          </div>
+        </div>
+        <div class="tbl-wrap" id="adminTable"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>

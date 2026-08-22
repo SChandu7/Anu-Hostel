@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#CC0000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Sign in · InfoREDZ</title>
+</head>
+<body data-page="auth">
+
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="auth-grid">
+
+    <aside class="auth-aside">
+      <h1>Be the reason someone gets a second chance.</h1>
+      <p>InfoREDZ lists willing donors and verified blood centres in one place, with the phone number right there. Free for everyone, always.</p>
+      <div class="legend">
+        <span><i style="background:#fff"></i>No fees, no commission, no ads</span>
+        <span><i style="background:#fff"></i>You decide when you are visible</span>
+        <span><i style="background:#fff"></i>Calls go directly between people</span>
+        <span><i style="background:#fff"></i>Centres maintain their own stock</span>
+      </div>
+    </aside>
+
+    <div class="auth-pane">
+      <div class="auth-pane__inner">
+
+        <div class="tabs" role="tablist">
+          <button class="tabs__btn is-on" data-tab="login" role="tab">Sign in</button>
+          <button class="tabs__btn" data-tab="register" role="tab">Create account</button>
+        </div>
+
+        <!-- ===== LOGIN ===== -->
+        <section id="loginPane">
+          <div class="demo-creds">
+            <b>Demo accounts</b> — password <code>demo123</code><br>
+            <button type="button" data-fill="akif@demo.in" class="link-btn" style="margin-top:6px">akif@demo.in (donor)</button> ·
+            <button type="button" data-fill="famous@demo.in" class="link-btn">famous@demo.in (blood bank)</button>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="field">
+              <label for="loginEmail">Email</label>
+              <input id="loginEmail" class="input" type="email" autocomplete="email" placeholder="you@example.com">
+            </div>
+            <div class="field">
+              <label for="loginPassword">Password</label>
+              <input id="loginPassword" class="input" type="password" autocomplete="current-password" placeholder="Your password">
+            </div>
+            <button class="btn btn--primary btn--block" type="submit">Sign in</button>
+          </form>
+
+          <div class="divider-or">or</div>
+          <button class="btn btn--ghost btn--block" id="guestBtn">Continue as guest</button>
+          <p class="hint" style="text-align:center">Guests can browse everything. Contacting a donor needs an account.</p>
+        </section>
+
+        <!-- ===== REGISTER ===== -->
+        <section id="registerPane" hidden>
+          <form id="registerForm" novalidate>
+            <div class="role-picker">
+              <button type="button" class="role-opt is-on" data-role="donor">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 3s5.5 6 5.5 10a5.5 5.5 0 1 1-11 0C6.5 9 12 3 12 3z"/></svg>
+                <div>I want to donate</div>
+              </button>
+              <button type="button" class="role-opt" data-role="blood_bank">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M4 21V8l8-5 8 5v13h-6v-5h-4v5H4zm7-11h2v2h2v2h-2v2h-2v-2H9v-2h2v-2z"/></svg>
+                <div>We are a centre</div>
+              </button>
+            </div>
+
+            <div class="field">
+              <label for="regName" id="regNameLabel">Full name</label>
+              <input id="regName" class="input" autocomplete="name" placeholder="As it should appear on your card">
+            </div>
+            <div class="field">
+              <label for="regEmail">Email</label>
+              <input id="regEmail" class="input" type="email" autocomplete="email" placeholder="you@example.com">
+            </div>
+            <div class="field">
+              <label for="regPassword">Password</label>
+              <input id="regPassword" class="input" type="password" autocomplete="new-password" placeholder="At least 6 characters">
+            </div>
+
+            <div class="field" id="cityWrap" style="position:relative">
+              <label for="regCity">City</label>
+              <input id="regCity" class="input" placeholder="Start typing — Guntur, Vijayawada…" autocomplete="off">
+              <p class="hint">Pick a suggestion or use your location so your pin lands in the right place.</p>
+            </div>
+            <button type="button" class="btn btn--ghost btn--block" id="gpsBtn" style="margin-bottom:16px">Use my location</button>
+
+            <div id="donorFields">
+              <div class="field-row">
+                <div class="field">
+                  <label for="regGroup">Blood group</label>
+                  <select id="regGroup" class="input">
+                    <option value="">Select</option>
+                    <option>O+</option><option>O-</option><option>A+</option><option>A-</option>
+                    <option>B+</option><option>B-</option><option>AB+</option><option>AB-</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="regGender">Gender</label>
+                  <select id="regGender" class="input"><option>Male</option><option>Female</option><option>Other</option></select>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label for="regAge">Age</label><input id="regAge" class="input" type="number" min="18" max="65" placeholder="18-65"></div>
+                <div class="field"><label for="regWeight">Weight (kg)</label><input id="regWeight" class="input" type="number" min="45" placeholder="50+"></div>
+              </div>
+              <div class="field">
+                <label for="regLast">Last donated</label>
+                <select id="regLast" class="input">
+                  <option>Never</option><option>Less than 3 months ago</option>
+                  <option>3-6 months ago</option><option>More than 6 months ago</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="regPhone">Phone number</label>
+                <input id="regPhone" class="input" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile">
+                <p class="hint">This is the number people will call. It is only shown to signed-in users.</p>
+              </div>
+            </div>
+
+            <div id="bankFields" hidden>
+              <div class="field"><label for="regBankName">Centre name</label><input id="regBankName" class="input" placeholder="Registered name of the blood bank"></div>
+              <div class="field"><label for="regBankAddress">Address</label><textarea id="regBankAddress" class="input" placeholder="Street, landmark"></textarea></div>
+              <div class="field-row">
+                <div class="field"><label for="regBankPhone">Phone</label><input id="regBankPhone" class="input" inputmode="numeric" placeholder="Landline or mobile"></div>
+                <div class="field"><label for="regTiming">Timing</label><input id="regTiming" class="input" placeholder="9 AM - 9 PM"></div>
+              </div>
+            </div>
+
+            <label class="check"><input type="checkbox" id="regTerms">
+              <span>I agree to the terms of use and privacy policy, and confirm the details above are correct.</span></label>
+
+            <button class="btn btn--primary btn--block" type="submit">Create account</button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>

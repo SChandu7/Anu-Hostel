@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#CC0000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <title>Map · InfoREDZ</title>
+</head>
+<body data-page="map">
+
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="map-shell">
+    <div class="map-toggles">
+      <button class="chip is-on" id="toggleDonors">Donors</button>
+      <button class="chip is-on" id="toggleBanks">Blood banks</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="map-legend">
+      <div><i style="background:#CC0000"></i>Donors</div>
+      <div><i style="background:#1D4ED8"></i>Blood banks</div>
+      <div style="margin-top:9px;font-size:11.5px;color:var(--text-muted);font-weight:600" id="mapCount">Loading…</div>
+    </div>
+
+    <button class="map-locate" id="locateBtn" aria-label="Centre on my location">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 3a9 9 0 0 0-8-8V1h-2v2a9 9 0 0 0-8 8H1v2h2a9 9 0 0 0 8 8v2h2v-2a9 9 0 0 0 8-8h2v-2h-2zm-9 8a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg>
+    </button>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>

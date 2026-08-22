@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#CC0000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>InfoREDZ — Find blood donors and centres near you</title>
+  <meta name="description" content="InfoREDZ connects willing blood donors, blood banks and people who need help. Free, direct, no middlemen.">
+</head>
+<body data-page="splash">
+
+  <div class="splash">
+    <svg class="splash__ecg" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 400 200">
+      <path d="M0 100h60l12-34 14 68 14-34h50l12-34 14 68 14-34h50l12-34 14 68 14-34h100"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+    <div class="splash__inner">
+      <div class="splash__logo">
+        <svg viewBox="0 0 24 24" width="52" height="52">
+          <path fill="currentColor" d="M12 21s-7-4.8-7-10a7 7 0 1 1 14 0c0 5.2-7 10-7 10z" opacity=".18"/>
+          <path fill="currentColor" d="M13.5 6h-3v3h-3v3h3v3h3v-3h3V9h-3V6z"/>
+        </svg>
+      </div>
+      <div class="splash__word" id="splashWord"></div>
+      <div class="splash__groups" id="splashGroups"></div>
+      <p class="splash__tag">Donors, centres and requests — in one place.</p>
+      <button class="btn btn--ghost btn--sm" id="splashSkip" style="margin-top:24px">Skip</button>
+    </div>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>
